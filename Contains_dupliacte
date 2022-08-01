@@ -1,0 +1,28 @@
+ bool containsDuplicate(vector<int>& nums) {
+        
+        //Method:1-Time-O(N)
+        sort(nums.begin(),nums.end());
+        for(int i=0;i<nums.size()-1;i++)
+        {
+            if(nums[i]==nums[i+1])
+                return true;
+        }
+        return false;
+        
+        //Method 2:Time-O(N)
+       unordered_map<int,int>m;
+        for(auto a:nums) m[a]++;
+        for(auto a:m)
+        {
+            if(a.second>1)
+                return true;
+        }
+        return false;
+        //Method 3:Time-O(N)
+        unordered_set<int>s;
+        for(auto a:nums)s.insert(a);
+            
+        if(nums.size()==s.size())
+            return false;
+        return true;
+    }
